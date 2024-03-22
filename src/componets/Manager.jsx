@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
-
+import { v4 as uuidv4 } from 'uuid';
 
 
 
@@ -10,7 +10,7 @@ const Manager = () => {
 
     const [showPassword, setShowPassword] = useState(false);
     const handleClick = () => setShowPassword(!showPassword);
-    const [form, setForm] = useState({ url: '', username: '', password: '' , email: '', id: ''  });
+    const [form, setForm] = useState({ site: '', username: '', password: '' , email: ''  });
     const [passwords, setPasswords] = useState([]);
 
     useEffect(() => {
@@ -22,14 +22,24 @@ const Manager = () => {
         }
      }, []);
 
-
+    
+    
     const savePassword = (event) => {
+    const id = uuidv4(); // Generate the UUID once
+    const newPassword = {...form, id}; // Use the same UUID for the new password
+
+    localStorage.setItem('passwords', JSON.stringify([...passwords, newPassword])); 
+    setPasswords([...passwords, newPassword]);
+    console.log(...passwords, newPassword);
+}
+
+    // const savePassword = (event) => {
         
-       localStorage.setItem('passwords', JSON.stringify([...passwords, form])); 
-        setPasswords([...passwords, form]);
-        console.log(...passwords, form);
+    //     localStorage.setItem('passwords', JSON.stringify([...passwords, {...form, id: uuidv4()}])); 
+    //     setPasswords([...passwords, {...form, id: uuidv4()}]);
+    //     console.log(...passwords, {...form, id: uuidv4()});
         
-     }
+    //  }
 
     //      const [editingPassword, setEditingPassword] = useState(null);
     // const savePassword = (event) => {
@@ -44,13 +54,28 @@ const Manager = () => {
     // setEditingPassword(null); // Reset the editing password
 
 
-const editpassword = (event) => { 
-    // setPassword(event.target.passwords); // Set the editing password
-    localStorage.setItem('passwords', JSON.stringify([...passwords, form])); 
-    setForm(passwords[event.target.passwords]); // Set the form values to the values of the editing password
-    }
+// const editpassword = (event) => {
+//     // setPassword(event.target.passwords); // Set the editing password
+//     localStorage.setItem('passwords', JSON.stringify([...passwords, form]));
+//     setForm(passwords[event.target.passwords]); // Set the form values to the values of the editing password
+//     }
     
+//     const editpassword = (id) => {
+//     const passwordToEdit = passwords.find((password) => password.id === id);
+//     setForm(passwordToEdit); // Set the form values to the values of the editing password
 
+//     const updatedPasswords = passwords.map((password) => password.id === id ? passwordToEdit : password);
+//     setPasswords(updatedPasswords);
+//     localStorage.setItem('passwords', JSON.stringify(updatedPasswords));
+    // }
+    
+    const editpassword = (id) => { 
+        console.log(id);
+        setForm(passwords.filter(i => i.id === id)[0]);
+        setPasswords(passwords.filter(i => i.id !== id));
+        localStorage.setItem('passwords', JSON.stringify([...passwords,form]));
+
+    }
 
 
     const handelChange = (e) => { 
@@ -75,7 +100,7 @@ const editpassword = (event) => {
 
                 <p className='text-green-100 text-lg text-center'>YOUR OWN PASSWORD MANAGER</p>
                 <div className="flex flex-col space-y-4 pt-5" >
-                    <input type="text" name='url' onChange={handelChange} value={form.url} className="border-2 border-green-300 p-2 rounded-full" placeholder="Enter URL" />
+                    <input type="text" name='site'  onChange={handelChange} value={form.site} className="border-2 border-green-300 p-2 rounded-full" placeholder="Enter URL" />
                     <input type="text" name='email' onChange={handelChange} value={form.email} className="border-2 border-green-300 p-2 rounded-full" placeholder="Enter Email Address"/>
                 
                     <div className= "flex w-full justify-between gap-8 pt-3">
@@ -130,11 +155,11 @@ const editpassword = (event) => {
                                                   {passwords.map(( items, index) => (
                                                         <tr key={index}>
                                                             <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-white sm:pl-0">{items.username}</td>
-                                                            <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300">{items.url}</td>
+                                                            <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300">{items.site}</td>
                                                             <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300">{items.email}</td>
                                                             <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300">{items.password}</td>
                                                             <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
-                                                                <a href="#" className="text-indigo-400 hover:text-indigo-300"onClick={editpassword}>Edit<span className="sr-only">, {items.username}</span></a>
+                                                                <a href="#" className="text-indigo-400 hover:text-indigo-300"onClick={editpassword}>Edit</a>
                                                             </td>
                                                         </tr>
                                                     ))}
