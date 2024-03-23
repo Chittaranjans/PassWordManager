@@ -86,7 +86,17 @@ const Manager = () => {
 
 
     return (
+
+<div>
+        <nav className='bg-transparent flex justify-center place-items-center text-center px-4 h-25'>
+          <div className='logo font-bold bg-black text-white'>
+             <span className='text-green-700'>&lt;</span> 
+              MyPasswordBox
+                <span className='text-green-700'>&gt;</span>
+        </div>
+             </nav>
         
+    
         <div>
             
             <div className="fixed inset-0 -z-10 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)]"></div>
@@ -179,7 +189,9 @@ const Manager = () => {
                                                                </div>
 
 
-    </div>
+            </div>
+        </div>
+        
     )
 }
 
