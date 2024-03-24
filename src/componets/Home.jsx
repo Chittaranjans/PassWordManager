@@ -1,18 +1,27 @@
-import React from 'react'
+import React from 'react';
+import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 
-function Home() {
+const Home = () => {
+  const {
+    transcript,
+    listening,
+    resetTranscript,
+    browserSupportsSpeechRecognition
+    } = useSpeechRecognition();
+    console.log(transcript);
+
+  if (!browserSupportsSpeechRecognition) {
+    return <span>Browser doesn't support speech recognition.</span>;
+  }
+
   return (
-      <div>
-          
-          
-          
-
-          <div>
-           <h1 className='text-green-900 '>HII I M CHITTARANJAN </h1>
-          </div>
-
+    <div>
+      <p className='text-white'>Microphone: {listening ? 'on' : 'off'}</p>
+      <button className='text-white' onClick={SpeechRecognition.startListening}>Start</button>
+      <button className='text-white' onClick={SpeechRecognition.stopListening}>Stop</button>
+      <button className='text-white' onClick={resetTranscript}>Reset</button>
+      <p className='text-white'>{transcript}</p>
     </div>
-  )
-}
-
-export default Home
+  );
+};
+export default Home;
