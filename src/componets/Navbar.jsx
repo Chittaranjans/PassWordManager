@@ -27,7 +27,7 @@ function Navbar() {
           
           <Link className = 'hover:bg-sky-700  bg-black text-white'  to="/contact">Contact</Link>
           
-            <Link className='hover:bg-sky-700  bg-black text-white' to="/about">About</Link> 
+            <Link className='hover:bg-sky-700  bg-black text-white' to="/about">Project</Link> 
           
                 
 
