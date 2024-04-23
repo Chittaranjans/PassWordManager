@@ -9,3 +9,11 @@ export default {
   },
   plugins: [],
 }
+
+// module.exports = {
+//  theme: {
+//     container: {
+//       center: true,
+//     },
+//  },
+// }
