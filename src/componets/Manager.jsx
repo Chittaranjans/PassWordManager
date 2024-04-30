@@ -87,7 +87,7 @@ const Manager = () => {
 
     return (
 
-<div>
+<div className='pt-20'>
         <nav className='bg-transparent flex justify-center place-items-center text-center px-4 h-25'>
           <div className='logo font-bold bg-black text-white'>
              <span className='text-green-700'>&lt;</span> 

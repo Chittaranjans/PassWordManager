@@ -7,12 +7,13 @@ function Navbar() {
 
          
     
-      <nav className='bg-transparent flex justify-between place-items-center ps-1 px-4 pt-4 pb-4  h-30'>
+      <nav className=' w-full bg-transparent flex justify-between items-center px-4 py-4  overflow-auto'>
           <div className='logo font-bold bg-black text-white'>
         
         
         
-          <h1>
+          <h1 className='border-b-4 border-blue-700 hover:border-blue-500 font-bold'>
+      
             Chittaranjan...
           </h1>
         
@@ -20,20 +21,13 @@ function Navbar() {
              
           
           </div>
-          <ul>
+      <ul>
+        {/* bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded */}
         <li className='flex gap-4'>
-          
-          <Link className='hover:bg-sky-700  bg-black text-white' to="/">Home</Link>
-          
-          <Link className = 'hover:bg-sky-700  bg-black text-white'  to="/contact">Contact</Link>
-          
-            <Link className='hover:bg-sky-700  bg-black text-white' to="/about">Project</Link> 
-          
-                
-
-
-               </li>
-              
+  <Link className='px-4 py-2 hover:bg-sky-700 text-white rounded-lg bg-green-600 transition-colors duration-200 border-b-4 border-blue-700 hover:border-blue-500' to="/">Home</Link>
+  <Link className='px-4 py-2 hover:bg-sky-700 text-white rounded-lg bg-green-600 transition-colors duration-200 border-b-4 border-blue-700 hover:border-blue-500' to="/contact">Passwordcreater</Link>
+  <Link className='px-4 py-2 hover:bg-sky-700 text-white rounded-lg bg-green-600 transition-colors duration-200 border-b-4 border-blue-700 hover:border-blue-500' to="/about">Project</Link>
+</li>
             </ul>
       </nav>
   
