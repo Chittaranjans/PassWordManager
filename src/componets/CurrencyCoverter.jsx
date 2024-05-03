@@ -20,6 +20,10 @@ function CurrencyConverter() {
 if (loading) {
         return <div className='text-white'>Loading...</div>; // or return a loading spinner, or some placeholder content
     }
+
+    // const [numRows, setNumRows] = useState(10);
+
+
     function InputBox({
         label,
         amount,
@@ -67,7 +71,7 @@ if (loading) {
     }
 
     function App() {
-        const [amount, setAmount] = useState(0)
+        const [amount, setAmount] = useState()
         const [from, setFrom] = useState("usd")
         const [to, setTo] = useState("inr")
         const [convertedAmount, setConvertedAmount] = useState(0)
@@ -88,17 +92,18 @@ if (loading) {
     } else {
         console.error(`Conversion rate for ${to} not found`);
     }
-}
+        }
+        const [numRows, setNumRows] = useState(10);
 
         return (
 
-            <div className="w-full  flex flex-wrap  justify-center  bg-cover bg-no-repeat p-2"
+            <div className="w-full  flex flex-wrap  justify-center  bg-cover bg-no-repeat p-2 max-w-md mx-auto"
             >
                 <p className="pt-10 pb-10 text-center justify-center text-white text-4xl font-bold">
                     Currency Converter
                 </p>
                 <div className="w-full pt-2">
-                    <div className="w-full max-w-md mx-auto border border-purple-40 0 rounded-lg p-5 backdrop-blur-sm  shadow-lg shadow-pink-900/90 ... bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 ...">
+                    <div className=" border border-purple-40 0 rounded-lg p-5 backdrop-blur-sm  shadow-lg shadow-pink-900/90 ... bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 ...">
                         <form onSubmit={(e) => {
                             e.preventDefault()
                             convert()
@@ -139,31 +144,36 @@ if (loading) {
                     </div>
                 </div>
 
-                <table className='w-full items-center justify-center border border-zinc-100 text-white'>
-                    <tbody>
-                        <tr>
-                            <th className='border border-zinc-100'>Currency</th>
-                            <th className='border border-zinc-100'>Rate</th>
-                        </tr>
-                        
-                        {Object.keys(data.quotes).map((currency) => {
-                            console.log(data);
-                            return (
-                                <tr key={currency}>
-                                    <td className='border border-zinc-100'>{currency.toUpperCase()}</td>
-                                    <td className='border border-zinc-100'>{data.quotes[currency]}</td>
-                                </tr>
-                            )
-                        })}
-                    </tbody>
-                    
-
-
-                 </table>
+                <div className=' justify-center items-center mt-4'>
+    <table className='w-full h-auto  items-center justify-center border border-zinc-100 text-white '>
+        <tbody>
+            <tr>
+                <th className='border border-zinc-100'>Currency</th>
+                <th className='border border-zinc-100'>Rate</th>
+            </tr>
+            
+            {Object.keys(data.quotes).slice(0, numRows).map((currency) => {
+                console.log(data);
+                return (
+                    <tr key={currency}>
+                        <td className='border border-zinc-100'>{currency.toUpperCase()}</td>
+                        <td className='border border-zinc-100'>{data.quotes[currency]}</td>
+                    </tr>
+                )
+            })}
+        </tbody>
+    </table>
+                <div className='flex justify-center items-center'>
+                    <button className='bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-teal-500 ... text-white px-4 py-3 rounded-lg mt-4' onClick={() => setNumRows(numRows + 10)}>Load More</button>
                 
                 
                
                 </div>
+
+                </div>
+
+
+            </div>
             
         )
     }
