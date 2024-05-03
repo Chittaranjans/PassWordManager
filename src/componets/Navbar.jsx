@@ -26,7 +26,8 @@ function Navbar() {
         <li className='flex gap-4'>
   <Link className='px-4 py-2 hover:bg-sky-700 text-white rounded-lg bg-green-600 transition-colors duration-200 border-b-4 border-blue-700 hover:border-blue-500' to="/">Home</Link>
   <Link className='px-4 py-2 hover:bg-sky-700 text-white rounded-lg bg-green-600 transition-colors duration-200 border-b-4 border-blue-700 hover:border-blue-500' to="/contact">Passwordcreater</Link>
-  <Link className='px-4 py-2 hover:bg-sky-700 text-white rounded-lg bg-green-600 transition-colors duration-200 border-b-4 border-blue-700 hover:border-blue-500' to="/about">Project</Link>
+          <Link className='px-4 py-2 hover:bg-sky-700 text-white rounded-lg bg-green-600 transition-colors duration-200 border-b-4 border-blue-700 hover:border-blue-500' to="/about">Project</Link>
+          <Link className='px-4 py-2 hover:bg-sky-700 text-white rounded-lg bg-green-600 transition-colors duration-200 border-b-4 border-blue-700 hover:border-blue-500' to="/Currency-converter">Currency Converter</Link>
 </li>
             </ul>
       </nav>

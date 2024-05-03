@@ -9,6 +9,7 @@ import Home from './componets/Home';
 import Contact from './componets/Contact';
 import About from './componets/About';
 import Manager from './componets/Manager';  
+import CurrencyCoverter from './componets/CurrencyCoverter';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           
       
       <Routes>
+        <Route path="/Currency-converter" element={<CurrencyCoverter />} />
         <Route path="/" element={<Home />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<Manager />} />
