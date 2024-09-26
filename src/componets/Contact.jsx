@@ -29,7 +29,7 @@ function Contact() {
     setPassword(password)
   }, [charecter, hasNumber, setPassword ,length])
 
-  useEffect(() => {handelPassword()}, [setPassword , length , hasNumber , charecter])
+  // useEffect(() => {handelPassword()}, [setPassword , length , hasNumber , charecter])
 
   const copy = useCallback(() => { 
     firstRender.current.select()
