@@ -1,13 +1,13 @@
-import logo from './logo.svg';
+
 import './index.css';
 import React from 'react';
 
 import Navbar from "./componets/Navbar";
-import { BrowserRouter } from 'react-router-dom';
+
 import { Routes , Route } from 'react-router-dom';
 import Home from './componets/Home';
 import Contact from './componets/Contact';
-import About from './componets/About';
+
 import Manager from './componets/Manager';  
 import CurrencyCoverter from './componets/CurrencyCoverter';
 
