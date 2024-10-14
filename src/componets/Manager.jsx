@@ -169,7 +169,7 @@ const Manager = () => {
                                                             <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300">{items.email}</td>
                                                             <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-300">{items.password}</td>
                                                             <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
-                                                                <a href="#" className="text-indigo-400 hover:text-indigo-300"onClick={editpassword}>Edit</a>
+                                                                <a href="https://chittaranjan.vercel.app/" className="text-indigo-400 hover:text-indigo-300"onClick={editpassword}>Edit</a>
                                                             </td>
                                                         </tr>
                                                     ))}
